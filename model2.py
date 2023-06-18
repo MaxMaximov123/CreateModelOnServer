@@ -1,7 +1,7 @@
 import tensorflow as tf
 from tensorflow.keras import layers
 import numpy as np
-import tensorflow.keras as keras
+import keras.backend
 
 config = tf.compat.v1.ConfigProto(inter_op_parallelism_threads=12, intra_op_parallelism_threads=12)
 session = tf.compat.v1.Session(config=config)
