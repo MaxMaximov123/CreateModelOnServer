@@ -1,7 +1,11 @@
 import tensorflow as tf
 from tensorflow.keras import layers
 import numpy as np
+import tensorflow.keras as keras
 
+config = tf.compat.v1.ConfigProto(inter_op_parallelism_threads=12, intra_op_parallelism_threads=12)
+session = tf.compat.v1.Session(config=config)
+keras.backend.set_session(session)
 
 def convert_text_to_vector(text):
 	text = text.replace(' ', '').lower()
