@@ -67,7 +67,7 @@ if a:
 	input_b = convert_funtions.input_b
 
 	labels = convert_funtions.labels
-	model.fit([input_a, input_b], labels, epochs=500, batch_size=32)
+	model.fit([input_a, input_b], labels, epochs=500, batch_size=32, use_multiprocessing=True, workers=12)
 	model.save('../models/model7.h5')
 else:
 	model.load_weights('../models/model7.h5')
