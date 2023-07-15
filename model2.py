@@ -1,6 +1,7 @@
 import tensorflow as tf
 from tensorflow.keras import layers
 import numpy as np
+import os
 
 
 def convert_text_to_vector(text):
@@ -19,6 +20,8 @@ def siamese_network(input_dim):
 
 	# Общая ветвь нейронной сети
 	shared_network = tf.keras.Sequential([
+		layers.Dense(128, activation='relu'),
+		layers.Dense(128, activation='relu'),
 		layers.Dense(128, activation='relu'),
 		layers.Dense(128, activation='relu')
 	])
@@ -52,14 +55,6 @@ def forecast(n1, n2):
 	return model.predict([np.array([convert_text_to_vector(n1)]), np.array([convert_text_to_vector(n2)])])[0]
 
 
-# Генерация случайных данных для обучения
-# input_a = np.random.random((1000, 100))
-# input_b = np.random.random((1000, 100))
-# labels = np.random.randint(2, size=(1000,))
-
-# print(labels)
-
-# Обучение модели
 a = 1
 if a:
 	import convert_funtions
@@ -69,7 +64,7 @@ if a:
 
 	labels = convert_funtions.labels
 	model.fit([input_a, input_b], labels, epochs=500, batch_size=32)
-	model.save('../models/model7.h5')
+	model.save(f'../models/model{len(os.listdir("models"))}.h5')
 else:
 	model.load_weights('../models/model7.h5')
 

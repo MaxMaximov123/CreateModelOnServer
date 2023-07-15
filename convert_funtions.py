@@ -40,7 +40,7 @@ def convert_game_name(name1, name2, st, b1, b2):
 
 def create_dataset():
     global input_b, input_a, labels
-    for i in tqdm(cursor.fetchall()[:-1000]):
+    for i in tqdm(cursor.fetchall()[:1000000]):
         # train_data.append(convert_game_name(i[0], i[1], 0, i[3], i[4]))
         # target_labels.append([i[2]])
 
