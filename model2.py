@@ -11,6 +11,7 @@ def convert_text_to_vector(text):
 	return exp_d
 
 
+
 def siamese_network(input_dim):
 	# Входные тензоры для двух строк
 	input_a = tf.keras.Input(shape=(input_dim,))
