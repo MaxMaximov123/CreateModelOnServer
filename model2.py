@@ -1,11 +1,7 @@
 import tensorflow as tf
 from tensorflow.keras import layers
 import numpy as np
-import keras.backend
 
-config = tf.compat.v1.ConfigProto(inter_op_parallelism_threads=12, intra_op_parallelism_threads=12)
-session = tf.compat.v1.Session(config=config)
-keras.backend.set_session(session)
 
 def convert_text_to_vector(text):
 	text = text.replace(' ', '').lower()
@@ -71,7 +67,7 @@ if a:
 	input_b = convert_funtions.input_b
 
 	labels = convert_funtions.labels
-	model.fit([input_a, input_b], labels, epochs=500, batch_size=32, use_multiprocessing=True, workers=12)
+	model.fit([input_a, input_b], labels, epochs=500, batch_size=32)
 	model.save('../models/model7.h5')
 else:
 	model.load_weights('../models/model7.h5')
